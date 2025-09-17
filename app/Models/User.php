@@ -47,4 +47,60 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+     // Relationships
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function loanEmiDetails()
+    {
+        return $this->hasMany(LoanEmiDetail::class);
+    }
+
+    public function udhariRecords()
+    {
+        return $this->hasMany(UdhariRecord::class);
+    }
+
+    public function financialGoals()
+    {
+        return $this->hasMany(FinancialGoal::class);
+    }
+
+    public function familyMembers()
+    {
+        return $this->hasMany(FamilyMember::class);
+    }
+
+    public function investmentRecords()
+    {
+        return $this->hasMany(InvestmentRecord::class);
+    }
+
+    public function insurancePolicies()
+    {
+        return $this->hasMany(InsurancePolicy::class);
+    }
+
+    public function businesses()
+    {
+        return $this->hasMany(Business::class);
+    }
+
+    public function authDevices()
+    {
+        return $this->hasMany(AuthDevice::class);
+    }
+
+    public function consents()
+    {
+        return $this->hasMany(UserConsent::class);
+    }
 }
