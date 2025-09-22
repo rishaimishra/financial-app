@@ -14,7 +14,8 @@ class BusinessesTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
+                TextColumn::make('user.name') // 👈 Displays the user's name
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
                     ->searchable(),
