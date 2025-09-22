@@ -14,20 +14,23 @@ class FinancialGoalForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
-                    ->required(),
+                Select::make('user_id') // 👈 Use Select for user relation
+                    ->relationship('user', 'name') // 👈 Link to the 'user' relation and show the 'name' field
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 TextInput::make('name')
                     ->required(),
                 Select::make('type')
                     ->options([
-            'savings' => 'Savings',
-            'education' => 'Education',
-            'wedding' => 'Wedding',
-            'elder_care' => 'Elder care',
-            'emergency_fund' => 'Emergency fund',
-            'car' => 'Car',
-            'home' => 'Home',
-        ])
+                        'savings' => 'Savings',
+                        'education' => 'Education',
+                        'wedding' => 'Wedding',
+                        'elder_care' => 'Elder care',
+                        'emergency_fund' => 'Emergency fund',
+                        'car' => 'Car',
+                        'home' => 'Home',
+                    ])
                     ->required(),
                 TextInput::make('target_amount')
                     ->required()
