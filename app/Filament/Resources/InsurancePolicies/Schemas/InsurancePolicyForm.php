@@ -13,18 +13,21 @@ class InsurancePolicyForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
-                    ->required(),
+                Select::make('user_id') // 👈 Use Select for user relationship
+                    ->relationship('user', 'name') // 👈 Link to the 'user' relationship and show the 'name' field
+                    ->required()
+                    ->searchable()
+                    ->preload(),
                 TextInput::make('provider_name')
                     ->required(),
                 Select::make('policy_type')
                     ->options([
-            'health' => 'Health',
-            'term' => 'Term',
-            'life' => 'Life',
-            'motor' => 'Motor',
-            'other' => 'Other',
-        ])
+                        'health' => 'Health',
+                        'term' => 'Term',
+                        'life' => 'Life',
+                        'motor' => 'Motor',
+                        'other' => 'Other',
+                    ])
                     ->required(),
                 TextInput::make('policy_number')
                     ->required(),

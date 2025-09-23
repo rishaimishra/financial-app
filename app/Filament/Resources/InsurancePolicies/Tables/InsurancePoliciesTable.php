@@ -14,7 +14,8 @@ class InsurancePoliciesTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
+                TextColumn::make('user.name') // 👈 Displays the user's name from the relationship
+                    ->sortable()
                     ->searchable(),
                 TextColumn::make('provider_name')
                     ->searchable(),
