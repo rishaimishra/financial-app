@@ -14,13 +14,17 @@ class TransactionsTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->searchable(),
-                TextColumn::make('category_id')
-                    ->numeric()
+                TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
                     ->sortable(),
-                TextColumn::make('type_id')
-                    ->numeric()
+                TextColumn::make('category.name')
+                    ->label('Category')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('type.name')
+                    ->label('Type')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('amount')
                     ->numeric()

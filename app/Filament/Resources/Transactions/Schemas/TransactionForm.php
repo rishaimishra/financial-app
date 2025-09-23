@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Transactions\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -12,13 +13,21 @@ class TransactionForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
+                Select::make('user_id')
+                    ->label('User')
+                    ->relationship('user', 'name')
+                    ->searchable()
                     ->required(),
-                TextInput::make('category_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('type_id')
-                    ->numeric(),
+                Select::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name')
+                    ->searchable()
+                    ->required(),
+                Select::make('type_id')
+                    ->label('Transaction Type')
+                    ->relationship('type', 'name')
+                    ->searchable()
+                    ->required(),
                 TextInput::make('amount')
                     ->required()
                     ->numeric(),

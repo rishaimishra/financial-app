@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('user_id');
+            $table->foreignId('user_id');
             $table->foreignId('category_id');
             $table->foreignId('type_id')->nullable();
             $table->decimal('amount', 15, 2);
