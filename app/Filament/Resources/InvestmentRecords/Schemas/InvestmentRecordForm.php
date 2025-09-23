@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\InvestmentRecords\Schemas;
 
+use App\Models\User; // Don't forget to import the User model!
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -13,19 +14,22 @@ class InvestmentRecordForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
+                Select::make('user_id')
+                    ->label('User')
+                    ->relationship('user', 'name')
+                    ->searchable()
                     ->required(),
                 TextInput::make('name')
                     ->required(),
                 Select::make('type')
                     ->options([
-            'mutual_fund' => 'Mutual fund',
-            'fd' => 'Fd',
-            'stock' => 'Stock',
-            'gold' => 'Gold',
-            'sip' => 'Sip',
-            'other' => 'Other',
-        ])
+                        'mutual_fund' => 'Mutual fund',
+                        'fd' => 'Fd',
+                        'stock' => 'Stock',
+                        'gold' => 'Gold',
+                        'sip' => 'Sip',
+                        'other' => 'Other',
+                    ])
                     ->required(),
                 TextInput::make('amount_invested')
                     ->numeric(),

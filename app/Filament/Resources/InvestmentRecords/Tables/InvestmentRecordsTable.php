@@ -14,8 +14,10 @@ class InvestmentRecordsTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->searchable(),
+                TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('type')
