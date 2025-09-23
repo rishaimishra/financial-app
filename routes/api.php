@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('businesses', \App\Http\Controllers\API\BusinessController::class);
     Route::get('/businesses/{id}/summary', [\App\Http\Controllers\API\BusinessController::class, 'summary']);
     Route::get('/businesses-summaries/all', [\App\Http\Controllers\API\BusinessController::class, 'allSummaries']);
+    Route::post('/business/expense', [\App\Http\Controllers\API\BusinessApiController::class, 'createExpense']);
+    Route::post('/business/income', [\App\Http\Controllers\API\BusinessApiController::class, 'createIncome']);
 
     // Add your other protected routes here
 });
