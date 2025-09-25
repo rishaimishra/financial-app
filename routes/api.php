@@ -26,5 +26,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/business/expense', [\App\Http\Controllers\API\BusinessApiController::class, 'createExpense']);
     Route::post('/business/income', [\App\Http\Controllers\API\BusinessApiController::class, 'createIncome']);
 
+    // Financial Goals routes
+    Route::apiResource('financial-goals', \App\Http\Controllers\API\FinancialGoalController::class);
+    Route::post('/financial-goals/{id}/contributions', [\App\Http\Controllers\API\FinancialGoalController::class, 'addContribution']);
+    Route::delete('/financial-goals/{goalId}/contributions/{contributionId}', [\App\Http\Controllers\API\FinancialGoalController::class, 'removeContribution']);
+    Route::post('/financial-goals/{id}/toggle-completion', [\App\Http\Controllers\API\FinancialGoalController::class, 'toggleCompletion']);
+    Route::get('/financial-goals-summary', [\App\Http\Controllers\API\FinancialGoalController::class, 'getSummary']);
+
     // Add your other protected routes here
 });
